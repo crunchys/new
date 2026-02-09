@@ -36,7 +36,7 @@ const features = [
 const plans = [
   {
     name: "Free",
-    price: "$0",
+    price: "0 \u20BD",
     period: "forever",
     features: [
       "5 generations per day",
@@ -49,7 +49,7 @@ const plans = [
   },
   {
     name: "Pro",
-    price: "$12",
+    price: "990 \u20BD",
     period: "/month",
     features: [
       "100 generations per day",
@@ -58,12 +58,12 @@ const plans = [
       "Generation history",
       "Priority support",
     ],
-    cta: "Start Pro Trial",
+    cta: "Get Pro",
     highlighted: true,
   },
   {
     name: "Business",
-    price: "$29",
+    price: "2 490 \u20BD",
     period: "/month",
     features: [
       "Unlimited generations",
@@ -73,7 +73,7 @@ const plans = [
       "Priority support",
       "API access (coming soon)",
     ],
-    cta: "Start Business Trial",
+    cta: "Get Business",
     highlighted: false,
   },
 ];

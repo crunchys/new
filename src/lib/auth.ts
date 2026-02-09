@@ -35,11 +35,25 @@ export async function getCurrentUser() {
       email: true,
       name: true,
       plan: true,
-      stripeCustomerId: true,
-      stripeSubscriptionId: true,
+      planExpiresAt: true,
       createdAt: true,
     },
   });
+
+  if (!user) return null;
+
+  // Auto-downgrade expired paid plans
+  if (
+    user.plan !== "free" &&
+    user.planExpiresAt &&
+    new Date() > user.planExpiresAt
+  ) {
+    await prisma.user.update({
+      where: { id: user.id },
+      data: { plan: "free", planExpiresAt: null },
+    });
+    return { ...user, plan: "free", planExpiresAt: null };
+  }
 
   return user;
 }
